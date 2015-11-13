@@ -7,6 +7,7 @@ var Canvas = require('drawille-canvas');
 var d3 = require('d3');
 var fs = require('fs');
 var cheerio = require('cheerio');
+var color = require('colors');
 
 var shipid = '6584';
 var url = 'https://www.marinetraffic.com/map/getvesselxml/shipid:' + shipid;
@@ -61,7 +62,23 @@ function draw() {
 		ctx.lineTo(w, h);
 		ctx.stroke();
 
-		console.log(ctx._canvas.frame());
+		var _frame = ctx._canvas.frame();
+		var _lines = [];
+		for (var i = 0; i < process.stdout.rows; i++) {
+			_lines.push(_frame.substr(i*process.stdout.columns, process.stdout.columns));
+		};
+
+		var _begin = Math.floor(process.stdout.columns/2)-1;
+		var _end = Math.ceil(process.stdout.columns/2)+1;
+		_lines.forEach(function(e, idx){
+			if (Math.floor(process.stdout.rows/2) === idx || Math.ceil(process.stdout.rows/2) === idx) {
+				_lines[idx] = e.substring(0,_begin).green + e.substring(_begin, _end).red.bold + e.substring(_end,process.stdout.columns).green;
+			} else {
+				_lines[idx] = e.green;
+			}
+		});
+		console.log(_lines.join(""));
+
 	});
 }
 
