@@ -1,18 +1,19 @@
 {
   "name": "whereis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "If you miss a beloved person who travells via ship, track her by ship id",
   "main": "whereis.js",
   "author": "Letty",
   "repository": {
-	"type": "git",
-	"url": "https://github.com/Letty/whereis"
+    "type": "git",
+    "url": "https://github.com/Letty/whereis"
   },
   "dependencies": {
-	"cheerio": "^0.19.0",
-	"d3": "^3.5.6",
-	"drawille-canvas": "^1.1.0",
-	"fs": "0.0.2",
-	"request": "^2.65.0"
+    "cheerio": "^0.19.0",
+    "colors": "^1.1.2",
+    "d3": "^3.5.6",
+    "drawille-canvas": "^1.1.0",
+    "fs": "0.0.2",
+    "request": "^2.65.0"
   }
 }
